@@ -44,6 +44,10 @@ public class PlayerControl : MonoBehaviour
     SpriteRenderer myRend;
 
     public GameObject life01, life02, life03;
+    public GameObject cameraObject;
+
+    private bool isTeleporting = false; // 是否正在传送
+    private Vector3 targetTeleportPosition; // 目标传送位置
 
     void Start()
     {
@@ -194,16 +198,41 @@ public class PlayerControl : MonoBehaviour
     {
         if (collision.tag == "DDL")
         {
-            //SceneManager.LoadScene(targetSceneName);
-            transform.position = respawnPoint;
-            life--;
-            Life();
+      
+            if (!isTeleporting)
+            {
+                StartCoroutine(TeleportWithDelay(respawnPoint));
+                // 在其他脚本中使用 CameraShake 组件触发摄像机震动
+                CameraShake cameraShakeComponent = cameraObject.GetComponent<CameraShake>();
+                cameraShakeComponent.TriggerShake();
+
+            }
         }
         else if (collision.tag == "checkpoint")
         {
-            respawnPoint = transform.position;
+            respawnPoint = transform.position; // 设置复活点
         }
-        void Life()
+    }
+
+    // 带有延迟的传送协程
+    private IEnumerator TeleportWithDelay(Vector3 teleportPosition)
+    {
+        isTeleporting = true;
+        targetTeleportPosition = teleportPosition;
+
+        // 在1秒延迟后传送
+        yield return new WaitForSeconds(0.2f);
+
+        // 传送玩家到目标位置
+        transform.position = targetTeleportPosition;
+
+        // 传送完成后将isTeleporting重置为false
+        isTeleporting = false;
+
+        life--;
+        Life(); // 碰到死亡区域，生命值减少
+    }
+    void Life() { 
         {
             if (life == 3)
             {
@@ -236,4 +265,5 @@ public class PlayerControl : MonoBehaviour
         }
     }
 }
+
 

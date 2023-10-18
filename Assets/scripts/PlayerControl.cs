@@ -40,6 +40,7 @@ public class PlayerControl : MonoBehaviour
     bool jump = false;
     bool doubleJump;
 
+    bool fall = false;
     Animator myAnim;
     SpriteRenderer myRend;
 
@@ -62,39 +63,60 @@ public class PlayerControl : MonoBehaviour
     {
         horizontalMove = Input.GetAxis("Horizontal");
 
-      //  if (Input.GetKeyDown(KeyCode.Return))  {
+        //  if (Input.GetKeyDown(KeyCode.Return))  {
         //    var bullet = Instantiate(bullerPrefab,bulletSpawnPoint.position,bulletSpawnPoint.rotation);
-          //  bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bullerSpeed;  }
+        //  bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bullerSpeed;  }
+
+        float verticalVelocity = myBody.velocity.y; // 获取玩家的垂直速度
+
 
         if (grounded && !Input.GetButton("Jump"))
         {
             doubleJump = false;
+          //  myAnim.SetBool("jumping", false);
+          //  myAnim.SetBool("falling", false);
         }
 
         if (Input.GetButtonDown("Jump"))
         {
             if (grounded || doubleJump)
             {
-                myAnim.SetBool("jumping", true);
+             //   myAnim.SetBool("jumping", true);
                 jump = true;
                 doubleJump = !doubleJump;
             }
         }
 
-
-        if (horizontalMove > 0.2f)
+        if (verticalVelocity > 0.1f)
         {
-            myAnim.SetBool("running", true);
-            myRend.flipX = false;
+            // 玩家正在上升，设置为跳跃动画
+            myAnim.SetBool("jumping", true);
+            myAnim.SetBool("falling", false);
         }
-        else if (horizontalMove < -0.2f)
+        else if (verticalVelocity < -0.1f)
         {
-            myAnim.SetBool("running", true);
-            myRend.flipX = true;
+            // 玩家正在下降，设置为下落动画
+            myAnim.SetBool("jumping", false);
+            myAnim.SetBool("falling", true);
         }
         else
         {
-            myAnim.SetBool("running", false);
+            if (horizontalMove > 0.2f)
+            {
+                myAnim.SetBool("running", true);
+                myRend.flipX = false;
+            }
+            else if (horizontalMove < -0.2f)
+            {
+                myAnim.SetBool("running", true);
+                myRend.flipX = true;
+            }
+            else
+            {
+                myAnim.SetBool("running", false);
+            }
+            myAnim.SetBool("jumping", false);
+            myAnim.SetBool("falling", false);
         }
     }
 
@@ -128,10 +150,12 @@ public class PlayerControl : MonoBehaviour
         if (hit.collider != null && hit.transform.name == "Ground")
         {
             myAnim.SetBool("jumping", false);
+            myAnim.SetBool("falling", false);
             grounded = true;
         }
         else
         {
+            myAnim.SetBool("falling", true);
             grounded = false;
         }
 

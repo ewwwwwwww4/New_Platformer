@@ -44,7 +44,7 @@ public class PlayerControl : MonoBehaviour
     bool jump = false;
     bool doubleJump;
 
-    bool fall = false;
+  //  bool fall = false;
     Animator myAnim;
     SpriteRenderer myRend;
 

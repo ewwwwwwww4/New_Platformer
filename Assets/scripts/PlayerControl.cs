@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
+
+
     float horizontalMove;
     public float speed = 2f;
 
@@ -19,10 +21,12 @@ public class PlayerControl : MonoBehaviour
     public float gravityScale = 5f;
     public float gravityFall = 40f;
 
+    public AudioClip soundEffect;
+
 
     //public Transform bulletSpawnPoint;
     //public GameObject bullerPrefab;
-  //  public float bullerSpeed = 10;
+    //  public float bullerSpeed = 10;
 
     //private bool enterAllowed;
     //private string sceneToLoad;
@@ -166,11 +170,10 @@ public class PlayerControl : MonoBehaviour
     {
         if (collision.gameObject.tag == "Trap")
         {
-            if (transform.position.y > collision.gameObject.transform.position.y)
-            {
-                life--;
-                Life();
-            }
+            AudioSource.PlayClipAtPoint(soundEffect, transform.position);
+            life--;
+            Life();
+            // if (transform.position.y > collision.gameObject.transform.position.y) {}
         }
 
 

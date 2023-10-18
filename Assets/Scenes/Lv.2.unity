@@ -491,7 +491,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 38.37784, y: -51.358128}
@@ -2339,6 +2339,7 @@ MonoBehaviour:
   life01: {fileID: 1684210993}
   life02: {fileID: 1891585884}
   life03: {fileID: 2124926066}
+  cameraObject: {fileID: 0}
 --- !u!50 &866564809
 Rigidbody2D:
   serializedVersion: 4
@@ -5802,6 +5803,7 @@ MonoBehaviour:
   life01: {fileID: 1684210993}
   life02: {fileID: 1891585884}
   life03: {fileID: 2124926066}
+  cameraObject: {fileID: 0}
 --- !u!50 &1663808814
 Rigidbody2D:
   serializedVersion: 4

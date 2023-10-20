@@ -96,12 +96,14 @@ public class PlayerControl : MonoBehaviour
             // 玩家正在上升，设置为跳跃动画
             myAnim.SetBool("jumping", true);
             myAnim.SetBool("falling", false);
+            myAnim.SetBool("running", false);
         }
         else if (verticalVelocity < -0.1f)
         {
             // 玩家正在下降，设置为下落动画
             myAnim.SetBool("jumping", false);
             myAnim.SetBool("falling", true);
+            myAnim.SetBool("running", false);
         }
         else
         {

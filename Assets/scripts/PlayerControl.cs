@@ -36,10 +36,12 @@ public class PlayerControl : MonoBehaviour
 
     public string targetSceneName2 = "Lv.2";
 
-    public string targetSceneName3 = "win";
+    public string targetSceneName3 = "lv3";
+
+    public string targetSceneName4 = "win";
 
 
-    private int life = 3;
+    private int life = 5;
 
     private Vector3 respawnPoint;
 
@@ -50,7 +52,7 @@ public class PlayerControl : MonoBehaviour
     Animator myAnim;
     SpriteRenderer myRend;
 
-    public GameObject life01, life02, life03;
+    public GameObject life01, life02, life03, life04,life05;
     public GameObject cameraObject;
 
     private bool isTeleporting = false; // 是否正在传送
@@ -202,35 +204,62 @@ public class PlayerControl : MonoBehaviour
         {
             SceneManager.LoadScene(targetSceneName2);
         }
-
         if (collision.gameObject.tag == "Door2")
         {
             SceneManager.LoadScene(targetSceneName3);
+        }
+        if (collision.gameObject.tag == "Door3")
+        {
+            SceneManager.LoadScene(targetSceneName4);
         }
 
 
         void Life()
         {
+            if (life == 5)
+            {
+                life05.SetActive(true);
+                life04.SetActive(true);
+                life03.SetActive(true);
+                life02.SetActive(true);
+                life01.SetActive(true);
+            }
+            if (life == 4)
+            {
+                life05.SetActive(false);
+                life04.SetActive(true);
+                life03.SetActive(true);
+                life02.SetActive(true);
+                life01.SetActive(true);
+            }
             if (life == 3)
             {
+                life05.SetActive(false);
+                life04.SetActive(false);
                 life03.SetActive(true);
                 life02.SetActive(true);
                 life01.SetActive(true);
             }
             if (life == 2)
             {
+                life05.SetActive(false);
+                life04.SetActive(false);
                 life03.SetActive(false);
                 life02.SetActive(true);
                 life01.SetActive(true);
             }
             if (life == 1)
             {
+                life05.SetActive(false);
+                life04.SetActive(false);
                 life03.SetActive(false);
                 life02.SetActive(false);
                 life01.SetActive(true);
             }
             if (life < 1)
             {
+                life05.SetActive(false);
+                life04.SetActive(false);
                 life03.SetActive(false);
                 life02.SetActive(false);
                 life01.SetActive(false);
@@ -283,26 +312,50 @@ public class PlayerControl : MonoBehaviour
     void Life()
     {
         {
+            if (life == 5)
+            {
+                life05.SetActive(true);
+                life04.SetActive(true);
+                life03.SetActive(true);
+                life02.SetActive(true);
+                life01.SetActive(true);
+            }
+            if (life == 4)
+            {
+                life05.SetActive(false);
+                life04.SetActive(true);
+                life03.SetActive(true);
+                life02.SetActive(true);
+                life01.SetActive(true);
+            }
             if (life == 3)
             {
+                life05.SetActive(false);
+                life04.SetActive(false);
                 life03.SetActive(true);
                 life02.SetActive(true);
                 life01.SetActive(true);
             }
             if (life == 2)
             {
+                life05.SetActive(false);
+                life04.SetActive(false);
                 life03.SetActive(false);
                 life02.SetActive(true);
                 life01.SetActive(true);
             }
             if (life == 1)
             {
+                life05.SetActive(false);
+                life04.SetActive(false);
                 life03.SetActive(false);
                 life02.SetActive(false);
                 life01.SetActive(true);
             }
             if (life < 1)
             {
+                life05.SetActive(false);
+                life04.SetActive(false);
                 life03.SetActive(false);
                 life02.SetActive(false);
                 life01.SetActive(false);
@@ -310,7 +363,6 @@ public class PlayerControl : MonoBehaviour
                 // enterAllowed = true;
                 SceneManager.LoadScene(targetSceneName);
             }
-
         }
     }
 }

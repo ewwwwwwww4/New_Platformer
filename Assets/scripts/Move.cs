@@ -8,9 +8,9 @@ public class Move : MonoBehaviour
     [SerializeField] Transform a;
     [SerializeField] Transform b;
     [SerializeField] bool isArrive;
-
+    [SerializeField] bool isArrive2;
     // Update is called once per frame
-   private  void Update()
+    private  void Update()
     {
 
         if (isArrive)
@@ -29,6 +29,23 @@ public class Move : MonoBehaviour
                 isArrive = !isArrive;
             }
         }
-        
+
+
+        if (isArrive2)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, b.position, speed * Time.deltaTime);
+            if (transform.position.y == b.position.y)
+            {
+                isArrive2 = !isArrive2;
+            }
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, a.position, speed * Time.deltaTime);
+            if (transform.position.y == a.position.y)
+            {
+                isArrive2 = !isArrive2;
+            }
+        }
     }
 }

@@ -21,6 +21,8 @@ public class PlayerControl : MonoBehaviour
     public float gravityScale = 5f;
     public float gravityFall = 40f;
 
+    //public float hurtforce = 3f;
+
     public AudioClip soundEffect;
 
 
@@ -44,7 +46,7 @@ public class PlayerControl : MonoBehaviour
     bool jump = false;
     bool doubleJump;
 
-  //  bool fall = false;
+    //  bool fall = false;
     Animator myAnim;
     SpriteRenderer myRend;
 
@@ -77,15 +79,15 @@ public class PlayerControl : MonoBehaviour
         if (grounded && !Input.GetButton("Jump"))
         {
             doubleJump = false;
-          //  myAnim.SetBool("jumping", false);
-          //  myAnim.SetBool("falling", false);
+            //  myAnim.SetBool("jumping", false);
+            //  myAnim.SetBool("falling", false);
         }
 
         if (Input.GetButtonDown("Jump"))
         {
             if (grounded || doubleJump)
             {
-             //   myAnim.SetBool("jumping", true);
+                //   myAnim.SetBool("jumping", true);
                 jump = true;
                 doubleJump = !doubleJump;
             }
@@ -173,8 +175,23 @@ public class PlayerControl : MonoBehaviour
         if (collision.gameObject.tag == "Trap")
         {
             AudioSource.PlayClipAtPoint(soundEffect, transform.position);
+             CameraShake cameraShakeComponent = cameraObject.GetComponent<CameraShake>();
+             cameraShakeComponent.TriggerShake();
             life--;
             Life();
+            // 获取 Trap 和玩家的位置
+            Vector3 trapPosition = collision.gameObject.transform.position;
+            Vector3 playerPosition = transform.position;
+
+            // 指定水平移动距离，你可以根据需要调整
+            float moveDistance = -3.0f; // 例如，移动1个单位
+
+            // 计算玩家应该移动的位置
+            float targetX = (trapPosition.x > playerPosition.x) ? playerPosition.x + moveDistance : playerPosition.x - moveDistance;
+
+            // 设置新的玩家位置，保持垂直位置不变
+            transform.position = new Vector3(targetX, playerPosition.y, playerPosition.z);
+
             // if (transform.position.y > collision.gameObject.transform.position.y) {}
         }
 
@@ -227,13 +244,13 @@ public class PlayerControl : MonoBehaviour
     {
         if (collision.tag == "DDL")
         {
-      
+
             if (!isTeleporting)
             {
                 StartCoroutine(TeleportWithDelay(respawnPoint));
                 // 在其他脚本中使用 CameraShake 组件触发摄像机震动
-                CameraShake cameraShakeComponent = cameraObject.GetComponent<CameraShake>();
-                cameraShakeComponent.TriggerShake();
+               // CameraShake cameraShakeComponent = cameraObject.GetComponent<CameraShake>();
+               // cameraShakeComponent.TriggerShake();
 
             }
         }
@@ -250,7 +267,7 @@ public class PlayerControl : MonoBehaviour
         targetTeleportPosition = teleportPosition;
 
         // 在1秒延迟后传送
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
 
         // 传送玩家到目标位置
         transform.position = targetTeleportPosition;
@@ -261,7 +278,8 @@ public class PlayerControl : MonoBehaviour
         life--;
         Life(); // 碰到死亡区域，生命值减少
     }
-    void Life() { 
+    void Life()
+    {
         {
             if (life == 3)
             {
@@ -294,5 +312,4 @@ public class PlayerControl : MonoBehaviour
         }
     }
 }
-
 

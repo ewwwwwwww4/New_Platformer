@@ -10,7 +10,7 @@ public class JumpPad : MonoBehaviour
         myAnim = GetComponent < Animator >();
     }
 
-    public float jumpForce = 10f;
+    public float jumpForce = 20f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

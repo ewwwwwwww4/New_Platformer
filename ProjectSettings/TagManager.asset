@@ -9,6 +9,7 @@ TagManager:
   - Door1
   - Door2
   - checkpoint
+  - platform
   layers:
   - Default
   - TransparentFX

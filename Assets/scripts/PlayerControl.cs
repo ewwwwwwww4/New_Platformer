@@ -172,7 +172,9 @@ public class PlayerControl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Trap")
+
+       
+            if (collision.gameObject.tag == "Trap")
         {
             AudioSource.PlayClipAtPoint(soundEffect, transform.position);
              CameraShake cameraShakeComponent = cameraObject.GetComponent<CameraShake>();
@@ -267,7 +269,7 @@ public class PlayerControl : MonoBehaviour
         targetTeleportPosition = teleportPosition;
 
         // 在1秒延迟后传送
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
 
         // 传送玩家到目标位置
         transform.position = targetTeleportPosition;

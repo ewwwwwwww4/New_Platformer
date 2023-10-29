@@ -870,6 +870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73aa3606a08ae443092c9615a12a166a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: 2a1913836b87341d599d68172e722845, type: 3}
   jumpForce: 50
 --- !u!212 &182733194
 SpriteRenderer:
@@ -1575,6 +1576,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300823430}
+  m_CullTransparentMesh: 1
+--- !u!1 &311413498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 311413499}
+  - component: {fileID: 311413501}
+  - component: {fileID: 311413500}
+  m_Layer: 5
+  m_Name: lv1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &311413499
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311413498}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1648356547}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 76, y: -95.99994}
+  m_SizeDelta: {x: 659.5, y: 474.415}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &311413500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311413498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 8584d6067ec8441f4ae924a9a42f7c90, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &311413501
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311413498}
   m_CullTransparentMesh: 1
 --- !u!1 &329537532
 GameObject:
@@ -3192,7 +3269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684342749}
   m_LocalRotation: {x: -0, y: -0, z: 0.0050147474, w: -0.9999874}
-  m_LocalPosition: {x: 119.29, y: 4.61, z: 0}
+  m_LocalPosition: {x: 118.7, y: 1.2, z: 0}
   m_LocalScale: {x: 2.519978, y: 3.379099, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4285,6 +4362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73aa3606a08ae443092c9615a12a166a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: 2a1913836b87341d599d68172e722845, type: 3}
   jumpForce: 40
 --- !u!212 &811283852
 SpriteRenderer:
@@ -4955,7 +5033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974373284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.4, y: -1.9, z: 0}
+  m_LocalPosition: {x: -10.1, y: -2.7, z: 0}
   m_LocalScale: {x: 1.2215747, y: 1.0576414, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5032,7 +5110,7 @@ MonoBehaviour:
   soundEffect: {fileID: 8300000, guid: ca7647382178548ce96ee485767c6d07, type: 3}
   targetSceneName: the end
   targetSceneName2: Lv.2
-  targetSceneName3: win
+  targetSceneName3: lv3
   targetSceneName4: win
   life01: {fileID: 2146159867}
   life02: {fileID: 572637685}
@@ -7385,9 +7463,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f3ac667c603ec446f9cebb6421a44f5f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 059688684be2b437597ff54dfdf8d39f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.285
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7848,6 +7926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73aa3606a08ae443092c9615a12a166a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: 2a1913836b87341d599d68172e722845, type: 3}
   jumpForce: 50
 --- !u!212 &1393114783
 SpriteRenderer:
@@ -8967,7 +9046,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645427899}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 119.51, y: 5.44, z: 0}
+  m_LocalPosition: {x: 118.7, y: 1.9, z: 0}
   m_LocalScale: {x: 1.9781535, y: 1.817554, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9022,7 +9101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -9073,6 +9152,7 @@ RectTransform:
   - {fileID: 1063684275}
   - {fileID: 500109555}
   - {fileID: 1559093822}
+  - {fileID: 311413499}
   m_Father: {fileID: 0}
   m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9157,7 +9237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669184223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.065, y: -1.4395996, z: -9.43}
+  m_LocalPosition: {x: -9.765, y: -2.2395997, z: -9.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -10336,7 +10416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932028819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.065, y: -1.4395996, z: -9.43}
+  m_LocalPosition: {x: -9.765, y: -2.2395997, z: -9.43}
   m_LocalScale: {x: 1.36, y: 1.36, z: 1.36}
   m_ConstrainProportionsScale: 1
   m_Children:

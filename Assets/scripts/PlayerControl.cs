@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
+    bool isHurt = false;
+    float hurtTimer = 0f;
+    float hurtDuration = 0.7f; // 伤害动画持续时间
 
 
     float horizontalMove;
@@ -69,6 +72,21 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
+
+        if (isHurt)
+        {
+            hurtTimer += Time.deltaTime; // 计时器累加
+
+            if (hurtTimer >= hurtDuration)
+            {
+                // 在动画持续时间后切换到其他动画状态
+                myAnim.SetBool("hurting", false); // 停止伤害动画
+               // myAnim.SetBool("otherAnimation", true); // 播放其他动画
+                isHurt = false; // 重置标志
+            }
+        }
+
+
         horizontalMove = Input.GetAxis("Horizontal");
 
         //  if (Input.GetKeyDown(KeyCode.Return))  {
@@ -175,14 +193,17 @@ public class PlayerControl : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-       
-            if (collision.gameObject.tag == "Trap")
+
+        if (collision.gameObject.tag == "Trap")
         {
             AudioSource.PlayClipAtPoint(soundEffect, transform.position);
-             CameraShake cameraShakeComponent = cameraObject.GetComponent<CameraShake>();
-             cameraShakeComponent.TriggerShake();
+            CameraShake cameraShakeComponent = cameraObject.GetComponent<CameraShake>();
+            cameraShakeComponent.TriggerShake();
             life--;
             Life();
+            myAnim.SetBool("hurting", true);
+            isHurt = true;
+            hurtTimer = 0f; // 重置计时器
             // 获取 Trap 和玩家的位置
             Vector3 trapPosition = collision.gameObject.transform.position;
             Vector3 playerPosition = transform.position;
@@ -198,6 +219,7 @@ public class PlayerControl : MonoBehaviour
 
             // if (transform.position.y > collision.gameObject.transform.position.y) {}
         }
+     //   else { myAnim.SetBool("hurting", false); }
 
 
         if (collision.gameObject.tag == "Door1")
@@ -306,9 +328,11 @@ public class PlayerControl : MonoBehaviour
         // 传送完成后将isTeleporting重置为false
         isTeleporting = false;
 
+      //  myAnim.SetBool("hurting", true);
         life--;
         Life(); // 碰到死亡区域，生命值减少
     }
+
     void Life()
     {
         {

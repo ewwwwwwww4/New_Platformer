@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class JumpPad : MonoBehaviour
 {
+
+    public AudioClip soundEffect;
+
     Animator myAnim;
     bool isPlayerOnPad = false;
 
@@ -19,6 +22,7 @@ public class JumpPad : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             myAnim.SetBool("falling", true);
             isPlayerOnPad = true;
+            AudioSource.PlayClipAtPoint(soundEffect, transform.position);
         }
     }
 

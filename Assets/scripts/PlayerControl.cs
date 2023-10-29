@@ -27,6 +27,7 @@ public class PlayerControl : MonoBehaviour
     //public float hurtforce = 3f;
 
     public AudioClip soundEffect;
+    //public AudioClip soundEffect2;
 
 
     //public Transform bulletSpawnPoint;
@@ -50,6 +51,8 @@ public class PlayerControl : MonoBehaviour
 
     bool jump = false;
     bool doubleJump;
+
+   
 
     //  bool fall = false;
     Animator myAnim;
@@ -180,6 +183,7 @@ public class PlayerControl : MonoBehaviour
             myAnim.SetBool("jumping", false);
             myAnim.SetBool("falling", false);
             grounded = true;
+           // AudioSource.PlayClipAtPoint(soundEffect2, transform.position);
         }
         else
         {
@@ -293,11 +297,15 @@ public class PlayerControl : MonoBehaviour
 
 
     }
+
+
+   
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "DDL")
         {
-
+           
             if (!isTeleporting)
             {
                 StartCoroutine(TeleportWithDelay(respawnPoint));
@@ -319,6 +327,7 @@ public class PlayerControl : MonoBehaviour
         isTeleporting = true;
         targetTeleportPosition = teleportPosition;
 
+        
         // 在1秒延迟后传送
         yield return new WaitForSeconds(0.3f);
 
@@ -328,7 +337,10 @@ public class PlayerControl : MonoBehaviour
         // 传送完成后将isTeleporting重置为false
         isTeleporting = false;
 
-      //  myAnim.SetBool("hurting", true);
+        myAnim.SetBool("hurting", true);
+        isHurt = true;
+        hurtTimer = 0f; // 重置计时器
+                        //  myAnim.SetBool("hurting", true);
         life--;
         Life(); // 碰到死亡区域，生命值减少
     }
